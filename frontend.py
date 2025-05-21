@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
 import requests
+from fastapi import HTTPException
 
 app = Flask(__name__)
 
 # FASTAPI_URL = "https://fastapi-transcriber.up.railway.app"
-FASTAPI_URL = "https://fastapi-transcriber.up.railway.app"
+FASTAPI_URL = "https://fastapi-transcriber.onrender.com"
 
 
   # Make sure FastAPI is running here
@@ -29,9 +30,11 @@ def index():
                     error = "Transcript not available."
             else:
                 # FastAPI responded with an error
-                error = response.json().get("detail", "An error occurred while processing the video.")
+                error = error = f"Error {response.status_code}: {response.text}"
         except Exception as e:
             error = f"Request failed: {str(e)}"
+        
+
 
     return render_template("index.html", transcript=transcript, error=error)
 
