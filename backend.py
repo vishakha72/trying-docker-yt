@@ -64,7 +64,7 @@ async def process_video(video_url: str):
         transcript_store[video_id] = data
         return data
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Transcript not available for this youtube video")
+            raise HTTPException(status_code=400, detail=f"Transcript not available: {str(e)}")
 
 @app.get("/all_transcripts")
 async def get_all_transcripts(): 
