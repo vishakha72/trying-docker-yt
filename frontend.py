@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Change this to your actual backend URL on Render
-FASTAPI_URL = "https://trying-docker-yt-1.onrender.com/"
+FASTAPI_URL = "https://trying-docker-yt-1.onrender.com"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
